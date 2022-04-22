@@ -92,9 +92,14 @@ class AnnaliseImageTest(APITestCase):
         assert list_response.json()["count"] == 3
 
         # create tag
-        post_response = self.client.post("/api/tags/", {"name": "test tag 4"})
+        post_response = self.client.post("/api/tags/", {"name": "test tag 444"})
         assert post_response.status_code == 201
         tag_name = post_response.json()["name"]
+
+        # search tags
+        name_search_response = self.client.get("/api/tags/", data={"name": "444"})
+        assert name_search_response.status_code == 200
+        assert name_search_response.json()["count"] == 1
 
         # delete tag
         delete_response = self.client.delete(f"/api/tags/{tag_name}/")

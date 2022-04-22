@@ -1,7 +1,6 @@
 from rest_framework import viewsets
-from rest_framework import permissions
 
-from annalise_test.images.filters import AnnaliseImageFilter
+from annalise_test.images.filters import AnnaliseImageFilter, TagFilter
 from annalise_test.images.models import AnnaliseImage, ImageTag
 from annalise_test.images.serializers import AnnaliseImageSerializer, ImageTagSerializer
 
@@ -21,3 +20,4 @@ class ImageTagViewSet(viewsets.ModelViewSet):
     """
     queryset = ImageTag.objects.order_by("name")
     serializer_class = ImageTagSerializer
+    filterset_class = TagFilter

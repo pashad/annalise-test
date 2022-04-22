@@ -1,7 +1,7 @@
 from django.db.models import QuerySet
-from django_filters.rest_framework import DateFilter, Filter, FilterSet
+from django_filters.rest_framework import CharFilter, DateFilter, Filter, FilterSet
 
-from annalise_test.images.models import AnnaliseImage
+from annalise_test.images.models import AnnaliseImage, ImageTag
 
 
 class ImageTagsFilter(Filter):
@@ -10,7 +10,7 @@ class ImageTagsFilter(Filter):
         if not value:
             return qs
 
-        values = value.split(',')
+        values = value.split(",")
         for v in values:
             qs = qs.filter(tags=v)
         return qs
@@ -18,9 +18,17 @@ class ImageTagsFilter(Filter):
 
 class AnnaliseImageFilter(FilterSet):
     tags = ImageTagsFilter()
-    start_date = DateFilter(field_name='created_at__date', lookup_expr='gte')
-    end_date = DateFilter(field_name='created_at__date', lookup_expr='lte')
+    start_date = DateFilter(field_name="created_at__date", lookup_expr="gte")
+    end_date = DateFilter(field_name="created_at__date", lookup_expr="lte")
 
     class Meta:
         model = AnnaliseImage
-        fields = ('tags', 'start_date', 'end_date')
+        fields = ("tags", "start_date", "end_date")
+
+
+class TagFilter(FilterSet):
+    name = CharFilter(lookup_expr="icontains")
+
+    class Meta:
+        model = ImageTag
+        fields = ("name",)
