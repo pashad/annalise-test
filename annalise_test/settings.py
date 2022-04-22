@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'annalise_test.images',
+    'annalise_test.tracking',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'annalise_test.tracking.middleware.APIInteractionTrackingMiddleware',
 ]
 
 ROOT_URLCONF = 'annalise_test.urls'

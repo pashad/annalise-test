@@ -3,12 +3,14 @@ from django.urls import include, path
 from rest_framework import routers
 
 from annalise_test import settings
-from annalise_test.images import views
+from annalise_test.images import views as images_views
+from annalise_test.tracking import views as tracking_views
 
 
 router = routers.DefaultRouter()
-router.register(r'images', views.AnnaliseImageViewSet)
-router.register(r'tags', views.ImageTagViewSet)
+router.register(r'images', images_views.AnnaliseImageViewSet)
+router.register(r'tags', images_views.ImageTagViewSet)
+router.register(r'trackings', tracking_views.APIInteractionTrackingViewSet)
 
 
 urlpatterns = [
