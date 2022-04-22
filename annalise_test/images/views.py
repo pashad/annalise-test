@@ -10,9 +10,8 @@ class AnnaliseImageViewSet(viewsets.ModelViewSet):
     """
     API endpoint for CRUD operations with AnnaliseImages.
     """
-    queryset = AnnaliseImage.objects.all().order_by('-created_at')
+    queryset = AnnaliseImage.objects.order_by('-created_at')
     serializer_class = AnnaliseImageSerializer
-    permission_classes = [permissions.IsAuthenticated]
     filterset_class = AnnaliseImageFilter
 
 
@@ -20,6 +19,5 @@ class ImageTagViewSet(viewsets.ModelViewSet):
     """
     API endpoint for CRUD operations with ImageTags.
     """
-    queryset = ImageTag.objects.all()
+    queryset = ImageTag.objects.order_by("name")
     serializer_class = ImageTagSerializer
-    permission_classes = [permissions.IsAuthenticated]
