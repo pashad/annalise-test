@@ -116,7 +116,7 @@ There is no any limitations to `tags` except the length of 50 chars. Some normal
 
 
 ### How would I deploy the project into a Cloud environment
-Django based projects usually consumes some resources (CPU and memory), so we'd probably go with AWS ECS approach rather than AWS Lambda.
+Django based projects usually consume resources (CPU and memory), so we'd probably go with AWS ECS approach rather than AWS Lambda.
 
 Infrastructure overview:
 
