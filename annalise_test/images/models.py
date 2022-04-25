@@ -3,7 +3,7 @@ from django.db import models
 
 
 class ImageTag(models.Model):
-    name = models.CharField(max_length=50, primary_key=True)  # TODO: lower(?)
+    name = models.CharField(max_length=50, primary_key=True)
 
 
 class AnnaliseImage(models.Model):

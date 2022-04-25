@@ -13,7 +13,7 @@ class AnnaliseImageTest(APITestCase):
     created_images: List[AnnaliseImage] = []
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         super().setUpClass()
 
         # create user
@@ -33,22 +33,22 @@ class AnnaliseImageTest(APITestCase):
                 cls.created_images.append(image_obj)
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(cls) -> None:
         for image_obj in cls.created_images:
             image_obj.delete()  # delete image from disk
         super().tearDownClass()
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.client.force_authenticate(user=self.test_user)
 
-    def test_api_endpoints(self):
+    def test_api_endpoints(self) -> None:
         response = self.client.get("/api/")
 
         assert response.status_code == 200
         assert "images" in response.json()
         assert "tags" in response.json()
 
-    def test_authentication_required(self):
+    def test_authentication_required(self) -> None:
         # unauthenticate requests
         self.client.force_authenticate(user=None)
 
@@ -59,7 +59,7 @@ class AnnaliseImageTest(APITestCase):
         default_403_response = {"detail": "Authentication credentials were not provided."}
         assert images_response.json() == tags_response.json() == default_403_response
 
-    def test_images_endpoint(self):
+    def test_images_endpoint(self) -> None:
         # list all images
         list_response = self.client.get("/api/images/")
         assert list_response.status_code == 200
@@ -94,7 +94,7 @@ class AnnaliseImageTest(APITestCase):
         delete_response = self.client.delete(f"/api/images/{image_id}/")
         assert delete_response.status_code == 204
 
-    def test_tags_endpoint(self):
+    def test_tags_endpoint(self) -> None:
         # list all tags
         list_response = self.client.get("/api/tags/")
         assert list_response.status_code == 200

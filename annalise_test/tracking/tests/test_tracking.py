@@ -5,17 +5,17 @@ from rest_framework.test import APITestCase
 class APIInteractionTrackingTest(APITestCase):
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls) -> None:
         super().setUpClass()
 
         # create users
         cls.test_user = User.objects.create_user("username", "Pas$w0rd")
         cls.test_superadmin = User.objects.create_superuser("admin", "AdminPas$w0rd")
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.client.force_authenticate(user=self.test_user)
 
-    def test_trackings(self):
+    def test_trackings(self) -> None:
         # create tracking record in DB
         response = self.client.get("/api/")
         assert response.status_code == 200
