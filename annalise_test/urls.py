@@ -6,7 +6,6 @@ from annalise_test import settings
 from annalise_test.images import views as images_views
 from annalise_test.tracking import views as tracking_views
 
-
 router = routers.DefaultRouter()
 router.register(r"images", images_views.AnnaliseImageViewSet)
 router.register(r"tags", images_views.ImageTagViewSet)

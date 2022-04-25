@@ -1,10 +1,9 @@
 from typing import Callable, TypeVar
 
-from django.http import HttpResponseForbidden, HttpRequest
+from django.http import HttpRequest, HttpResponseForbidden
 from django.http.response import HttpResponseBase
 
 from annalise_test import settings
-
 
 ResponseType = TypeVar("ResponseType", bound=HttpResponseBase)
 RequestType = TypeVar("RequestType", bound=HttpRequest)
