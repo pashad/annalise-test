@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'annalise_test.tracking.middleware.APIInteractionTrackingMiddleware',
+    'annalise_test.common.middleware.MediaRestrictedAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'annalise_test.urls'
