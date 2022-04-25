@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # third party
     "rest_framework",
     "django_filters",
+    # internal
     "annalise_test.images",
     "annalise_test.tracking",
 ]
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # internal
     "annalise_test.tracking.middleware.APIInteractionTrackingMiddleware",
     "annalise_test.common.middleware.MediaRestrictedAccessMiddleware",
 ]
