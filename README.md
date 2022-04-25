@@ -60,6 +60,19 @@ curl -X POST -H 'Content-Type: application/json' -d '{"name": "brand new tag"}' 
 curl -X POST -F 'image=@/<pwd to image>/test123.jpeg' -F 'tags=my tag' -F 'tags=another tag'  -u <username>:<password> http://127.0.0.1:8000/api/images/
 ```
 
+##### URL query params (searching and filtering)
+`images` can be filtered by `tags` (exact match), `start_date` and `end_date`
+
+eg.: `http://127.0.0.1:8000/api/images/?tags=my%20tag&start_date=2022-04-22&end_date=2022-04-22`
+
+`tags` can be filtered by `name` (`icontains` lookup)
+
+eg.: `http://127.0.0.1:8000/api/tags/?name=my`
+
+`trackings` can be filtered by `user (id)` and `endpoint`
+
+eg.: `http://127.0.0.1:8000/api/trackings/?endpoint=/api/images/6/&user=1` (admin user only)
+
 ### Tests
 Run `./manage.py test`
 
