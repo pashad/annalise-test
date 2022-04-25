@@ -8,6 +8,7 @@ class APIInteractionTrackingViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint for listing user api interactions.
     """
+
     queryset = APIInteractionTracking.objects.order_by("-created_at")
     serializer_class = APIInteractionTrackingSerializer
     permission_classes = [permissions.IsAdminUser]

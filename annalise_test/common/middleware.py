@@ -6,12 +6,12 @@ from django.http.response import HttpResponseBase
 from annalise_test import settings
 
 
-ResponseType = TypeVar('ResponseType', bound=HttpResponseBase)
-RequestType = TypeVar('RequestType', bound=HttpRequest)
+ResponseType = TypeVar("ResponseType", bound=HttpResponseBase)
+RequestType = TypeVar("RequestType", bound=HttpRequest)
 
 
 class MediaRestrictedAccessMiddleware:
-    """ Restrict access to media files for non-authenticated users. """
+    """Restrict access to media files for non-authenticated users."""
 
     def __init__(self, get_response: Callable) -> None:
         self.get_response = get_response

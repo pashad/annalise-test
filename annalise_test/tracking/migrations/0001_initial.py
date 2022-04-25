@@ -15,18 +15,23 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='APIInteractionTracking',
+            name="APIInteractionTracking",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('endpoint', models.CharField(max_length=100)),
-                ('headers', models.JSONField()),
-                ('status_code', models.IntegerField()),
-                ('data', models.JSONField()),
-                ('cookies', models.JSONField()),
-                ('method', models.CharField(max_length=8)),
-                ('response', models.JSONField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("endpoint", models.CharField(max_length=100)),
+                ("headers", models.JSONField()),
+                ("status_code", models.IntegerField()),
+                ("data", models.JSONField()),
+                ("cookies", models.JSONField()),
+                ("method", models.CharField(max_length=8)),
+                ("response", models.JSONField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL
+                    ),
+                ),
             ],
         ),
     ]

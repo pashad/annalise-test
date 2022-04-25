@@ -5,7 +5,6 @@ from annalise_test.images.models import AnnaliseImage, ImageTag
 
 
 class ImageTagsFilter(Filter):
-
     def filter(self, qs: QuerySet[AnnaliseImage], value: str) -> QuerySet[AnnaliseImage]:
         if not value:
             return qs

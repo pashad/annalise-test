@@ -6,8 +6,8 @@ from django.http.response import HttpResponseBase
 from annalise_test.tracking.models import APIInteractionTracking
 
 
-ResponseType = TypeVar('ResponseType', bound=HttpResponseBase)
-RequestType = TypeVar('RequestType', bound=HttpRequest)
+ResponseType = TypeVar("ResponseType", bound=HttpResponseBase)
+RequestType = TypeVar("RequestType", bound=HttpRequest)
 
 
 class APIInteractionTrackingMiddleware:

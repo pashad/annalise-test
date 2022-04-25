@@ -8,12 +8,12 @@ from annalise_test.tracking import views as tracking_views
 
 
 router = routers.DefaultRouter()
-router.register(r'images', images_views.AnnaliseImageViewSet)
-router.register(r'tags', images_views.ImageTagViewSet)
-router.register(r'trackings', tracking_views.APIInteractionTrackingViewSet)
+router.register(r"images", images_views.AnnaliseImageViewSet)
+router.register(r"tags", images_views.ImageTagViewSet)
+router.register(r"trackings", tracking_views.APIInteractionTrackingViewSet)
 
 
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path("api/", include(router.urls)),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

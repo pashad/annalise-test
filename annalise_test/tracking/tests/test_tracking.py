@@ -3,7 +3,6 @@ from rest_framework.test import APITestCase
 
 
 class APIInteractionTrackingTest(APITestCase):
-
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()

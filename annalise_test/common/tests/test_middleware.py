@@ -5,7 +5,6 @@ from annalise_test import settings
 
 
 class MediaProtectedTest(TestCase):
-
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()
