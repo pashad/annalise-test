@@ -8,7 +8,12 @@ class ImageTag(models.Model):
 
 class AnnaliseImage(models.Model):
     # file will be saved to MEDIA_ROOT/images/2022/04/22
-    image = models.ImageField(upload_to='images/%Y/%m/%d/')  # TODO: post_delete remove image from disk
+    image = models.ImageField(upload_to='images/%Y/%m/%d/')
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     tags = models.ManyToManyField(ImageTag, blank=True)
+
+    def delete(self, *args, **kwargs):
+        # delete image file from disk
+        self.image.storage.delete(self.image.name)
+        super().delete(*args, **kwargs)

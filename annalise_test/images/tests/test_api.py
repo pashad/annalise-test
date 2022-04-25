@@ -1,5 +1,6 @@
 from datetime import date
 from pathlib import Path
+from typing import List
 
 from django.contrib.auth.models import User
 from django.core.files import File
@@ -9,6 +10,7 @@ from annalise_test.images.models import AnnaliseImage, ImageTag
 
 
 class AnnaliseImageTest(APITestCase):
+    created_images: List[AnnaliseImage] = []
 
     @classmethod
     def setUpClass(cls):
@@ -28,6 +30,13 @@ class AnnaliseImageTest(APITestCase):
                 image_obj.image = File(f)
                 image_obj.image.name = image_file
                 image_obj.save()
+                cls.created_images.append(image_obj)
+
+    @classmethod
+    def tearDownClass(cls):
+        for image_obj in cls.created_images:
+            image_obj.delete()  # delete image from disk
+        super().tearDownClass()
 
     def setUp(self):
         self.client.force_authenticate(user=self.test_user)
